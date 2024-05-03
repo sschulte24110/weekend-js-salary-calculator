@@ -2,6 +2,8 @@ onReady();
 function onReady() {
   console.log('DOM is ready!');
 }
+let employees = [];
+let salaryTotalMonthly = 0;
 
 function addEmployee(event) {
   event.preventDefault();
@@ -11,6 +13,7 @@ function addEmployee(event) {
   const idNumber = document.getElementById('id-number');
   const jobTitle = document.getElementById('job-title');
   const annualSalary = document.getElementById('annual-salary');
+  const monthlySalary = document.getElementById('monthly-salary');
 
   console.log(`${firstName.value} ${lastName.value}`);
 
@@ -24,6 +27,10 @@ function addEmployee(event) {
       <td><button class="button-color" onclick="deleteEmployee(event)">&#x2718</button></td>
     </tr>
   `;
+  console.log(`salary is: ${annualSalary.value}`);
+  salaryTotalMonthly += Number(annualSalary.value);
+
+  monthlySalary.innerText = Math.round((salaryTotalMonthly / 12) * 100);
 
   firstName.value = '';
   lastName.value = '';
@@ -31,6 +38,8 @@ function addEmployee(event) {
   jobTitle.value = '';
   annualSalary.value = '';
 }
+
+function appendEmployee() {}
 
 function deleteEmployee(event) {
   event.target.closest('tr').remove();
