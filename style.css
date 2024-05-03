@@ -1,0 +1,48 @@
+body {
+  background-color: #dcdcdc;
+  font-family: 'Roboto', sans-serif;
+  color: #313131;
+  font-size: 1.25em;
+}
+
+/* HEADER/FOOTER */
+header, footer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-size: 2.5em;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  text-align: left;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 2.15em;
+}
+th, td {
+  padding: .5em;
+  min-width: 3.5em;
+  border-color: navy;
+  border-width: 3px;
+}
+thead {
+  background: #7a7a7a;
+  color: #fcfcfc;
+}
+tbody tr:nth-child(odd){ 
+  background: #fcfcfc;
+}
+tbody tr:nth-child(even){
+  background: lightskyblue;
+}
+
+#total-monthly {
+  text-align: right;
+}

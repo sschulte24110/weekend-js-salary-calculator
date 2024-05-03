@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary Calculator</title>
+  <script src="salary.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Salary Calculator</h1>
+  </header>
+
+  <main>
+    <h3>Add Employee</h3>
+    <section class="new-employee">
+      <form onsubmit="addEmployee(event)">
+        <input id="first-name" placeholder="First Name" value="Scott" type="text" required>
+        <input id="last-name" placeholder="Last Name" value="Schulte" type="text" required>
+        <input id="id-number" placeholder="ID Number" value="100" type="number" required>
+        <input id="job-title" placeholder="Job Title" value="Programmer" type="text" required>
+        <input id="annual-salary" placeholder="Annual Salary" value="80000" type="number" required>
+        <button id="add-employee-button" type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section class="employee-list">
+      <h3>Employees</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Annual Salary</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- <tr>
+            <td>You probably got this!</td>
+            <td>Oscar</td>
+          </tr>
+          <tr>
+            <td>You definitely got this!</td>
+            <td>Elmo</td>
+          </tr>
+          <tr>
+            <td>Don't forget to delete these three hardcoded table rows!</td>
+            <td>Abby Cadabby</td>
+          </tr> -->
+        </tbody>
+      </table>
+      <h3 id="total-monthly">Total Monthly: $00,000</h3>
+    </section>
+
+  </main>
+</body>
+
+</html>
