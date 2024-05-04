@@ -1,6 +1,7 @@
 onReady();
 function onReady() {
   console.log('DOM is ready!');
+  // clearEmployees();
 }
 let employees = [];
 let salaryTotalMonthly = 0;
@@ -52,4 +53,8 @@ function appendEmployee() {}
 
 function deleteEmployee(event) {
   event.target.closest('tr').remove();
+}
+
+function clearEmployees() {
+  document.getElementById('employee-array').innerHTML = '';
 }
