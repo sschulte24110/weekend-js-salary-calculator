@@ -1,7 +1,8 @@
 onReady();
 function onReady() {
   console.log('DOM is ready!');
-  clearEmployees();
+  // renderEmployeeList();
+  // clearEmployees();
 }
 let employees = [];
 let USDollar = new Intl.NumberFormat('en-US', {
@@ -17,7 +18,7 @@ function addEmployee(event) {
   const idNumberInput = document.getElementById('id-number');
   const jobTitleInput = document.getElementById('job-title');
   const annualSalaryInput = document.getElementById('annual-salary');
-  const monthlySalary = document.getElementById('monthly-salary');
+  // const monthlySalary = document.getElementById('monthly-salary');
 
   console.log(
     `${firstNameInput.value} ${lastNameInput.value} ${USDollar.format(
@@ -34,17 +35,17 @@ function addEmployee(event) {
   };
   console.log('Employee Object', eachEmployee);
 
-  document.getElementById('table-body').innerHTML += `
-  <tr>
-      <td>${firstNameInput.value}</td>
-      <td>${lastNameInput.value}</td>
-      <td>${idNumberInput.value}</td>
-      <td>${jobTitleInput.value}</td>
-      <td>${USDollar.format(annualSalaryInput.value)}</td>
-      <td><button class="button-color" onclick="deleteEmployee(event)">Delete</button></td>
-    </tr>
-  `;
-  console.log(`salary is: ${USDollar.format(annualSalaryInput.value)}`);
+  // document.getElementById('table-body').innerHTML += `
+  // <tr>
+  //     <td>${firstNameInput.value}</td>
+  //     <td>${lastNameInput.value}</td>
+  //     <td>${idNumberInput.value}</td>
+  //     <td>${jobTitleInput.value}</td>
+  //     <td>${USDollar.format(annualSalaryInput.value)}</td>
+  //     <td><button class="button-color" onclick="deleteEmployee(event)">Delete</button></td>
+  //   </tr>
+  // `;
+  // console.log(`salary is: ${USDollar.format(annualSalaryInput.value)}`);
 
   employees.push(eachEmployee);
   console.log('Employee List:', employees);
@@ -55,6 +56,7 @@ function addEmployee(event) {
   jobTitleInput.value = '';
   annualSalaryInput.value = '';
 
+  renderEmployeeList();
   employeeMonthlySalary();
 }
 
@@ -73,16 +75,33 @@ function employeeMonthlySalary() {
   )}`;
 }
 
-function appendEmployee() {}
+function renderEmployeeList() {
+  const tableBodyElement = document.getElementById('table-body');
+  tableBodyElement.innerHTML = '';
+
+  for (let i = 0; i < employees.length; i++) {
+    document.getElementById('table-body').innerHTML += `
+  <tr>
+      <td>${employees[i].firstName}</td>
+      <td>${employees[i].lastName}</td>
+      <td>${employees[i].idNumber}</td>
+      <td>${employees[i].jobTitle}</td>
+      <td>${USDollar.format(employees[i].annualSalary)}</td>
+      <td><button id=${i} class="button-color" onclick="deleteEmployee(event)">Delete</button></td>
+    </tr>
+  `;
+  }
+}
 
 function deleteEmployee(event) {
-  event.target.closest('tr').remove();
-  // const removeEmployeeId = event.target.id;
-  // employees.splice(Number(removeEmployeeId), 1);
+  // event.target.closest('tr').remove();
+  const removeEmployeeId = event.target.id;
+  employees.splice(Number(removeEmployeeId), 1);
 
+  renderEmployeeList();
   employeeMonthlySalary();
 }
 
-function clearEmployees() {
-  document.getElementById('employee-array').innerHTML = '';
-}
+// function clearEmployees() {
+//   document.getElementById('employee-array').innerHTML = '';
+// }
