@@ -41,7 +41,7 @@ function addEmployee(event) {
       <td>${idNumberInput.value}</td>
       <td>${jobTitleInput.value}</td>
       <td>${USDollar.format(annualSalaryInput.value)}</td>
-      <td><button class="button-color" onclick="deleteEmployee(event)">&#x2718</button></td>
+      <td><button class="button-color" onclick="deleteEmployee(event)">Delete</button></td>
     </tr>
   `;
   console.log(`salary is: ${USDollar.format(annualSalaryInput.value)}`);
@@ -77,6 +77,8 @@ function appendEmployee() {}
 
 function deleteEmployee(event) {
   event.target.closest('tr').remove();
+  // const removeEmployeeId = event.target.id;
+  // employees.splice(Number(removeEmployeeId), 1);
 
   employeeMonthlySalary();
 }

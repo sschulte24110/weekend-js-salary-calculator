@@ -24,9 +24,19 @@ input {
   border: 1px solid;
 }
 .button-color {
-  padding: .5em;
+  padding: 10px;
   width: 75px;
-  border-radius: 3px;
+  font-size: px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-color: navy;
+}
+#add-employee-button {
+  padding: 0px;
+  width: 100px;
+  height: 32.778px;
+  font-size: 18px;
+  border-radius: 5px;
   cursor: pointer;
   border-color: navy;
 }
