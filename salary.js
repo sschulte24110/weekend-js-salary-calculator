@@ -1,10 +1,13 @@
 onReady();
 function onReady() {
   console.log('DOM is ready!');
-  // clearEmployees();
+  clearEmployees();
 }
 let employees = [];
-let salaryTotalMonthly = 0;
+let USDollar = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 
 function addEmployee(event) {
   event.preventDefault();
@@ -16,14 +19,18 @@ function addEmployee(event) {
   const annualSalaryInput = document.getElementById('annual-salary');
   const monthlySalary = document.getElementById('monthly-salary');
 
-  console.log(`${firstNameInput.value} ${lastNameInput.value}`);
+  console.log(
+    `${firstNameInput.value} ${lastNameInput.value} ${USDollar.format(
+      annualSalaryInput.value
+    )}`
+  );
 
   const eachEmployee = {
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     idNumber: idNumberInput.value,
     jobTitle: jobTitleInput.value,
-    annualSalary: annualSalaryInput.value,
+    annualSalary: Number(annualSalaryInput.value),
   };
   console.log('Employee Object', eachEmployee);
 
@@ -33,26 +40,45 @@ function addEmployee(event) {
       <td>${lastNameInput.value}</td>
       <td>${idNumberInput.value}</td>
       <td>${jobTitleInput.value}</td>
-      <td>${annualSalaryInput.value}</td>
+      <td>${USDollar.format(annualSalaryInput.value)}</td>
       <td><button class="button-color" onclick="deleteEmployee(event)">&#x2718</button></td>
     </tr>
   `;
-  console.log(`salary is: ${annualSalaryInput.value}`);
-  salaryTotalMonthly += Number(annualSalaryInput.value);
+  console.log(`salary is: ${USDollar.format(annualSalaryInput.value)}`);
 
-  monthlySalary.innerText = Math.round(salaryTotalMonthly / 12);
+  employees.push(eachEmployee);
+  console.log('Employee List:', employees);
 
   firstNameInput.value = '';
   lastNameInput.value = '';
   idNumberInput.value = '';
   jobTitleInput.value = '';
   annualSalaryInput.value = '';
+
+  employeeMonthlySalary();
+}
+
+function employeeMonthlySalary() {
+  let totalMonthly = 0;
+  for (let i = 0; i < employees.length; i++) {
+    totalMonthly = totalMonthly + employees[i].annualSalary;
+  }
+  let divideMonthly = totalMonthly / 12;
+
+  console.log('Total Monthly:', USDollar.format(divideMonthly));
+
+  const totalDivideMonthly = document.getElementById('total-monthly');
+  totalDivideMonthly.innerText = `Total Monthly: ${USDollar.format(
+    divideMonthly
+  )}`;
 }
 
 function appendEmployee() {}
 
 function deleteEmployee(event) {
   event.target.closest('tr').remove();
+
+  employeeMonthlySalary();
 }
 
 function clearEmployees() {
