@@ -68,11 +68,17 @@ function employeeMonthlySalary() {
   let divideMonthly = totalMonthly / 12;
 
   console.log('Total Monthly:', USDollar.format(divideMonthly));
-
   const totalDivideMonthly = document.getElementById('total-monthly');
-  totalDivideMonthly.innerText = `Total Monthly: ${USDollar.format(
-    divideMonthly
-  )}`;
+  if (divideMonthly > 20000) {
+    totalDivideMonthly.innerText = `Total Monthly: ${USDollar.format(
+      divideMonthly
+    )}`;
+    totalDivideMonthly.style.backgroundColor = 'red';
+  } else {
+    totalDivideMonthly.innerText = `Total Monthly: ${USDollar.format(
+      divideMonthly
+    )}`;
+  }
 }
 
 function renderEmployeeList() {
