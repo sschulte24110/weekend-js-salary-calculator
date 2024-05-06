@@ -66,6 +66,7 @@ function employeeMonthlySalary() {
     totalDivideMonthly.innerText = `Total Monthly: ${USDollar.format(
       divideMonthly
     )}`;
+    totalDivideMonthly.style.backgroundColor = '#dcdcdc';
   }
   renderEmployeeList();
 }
