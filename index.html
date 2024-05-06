@@ -17,13 +17,19 @@
   <main>
     <h3>Add Employee</h3>
     <section class="new-employee">
-      <form onsubmit="addEmployee(event)">
-        <input id="first-name" placeholder="First Name" value="Scott" type="text" required>
-        <input id="last-name" placeholder="Last Name" value="Schulte" type="text" required>
-        <input id="id-number" placeholder="ID Number" value="100" type="number" required>
-        <input id="job-title" placeholder="Job Title" value="Programmer" type="text" required>
-        <input id="annual-salary" placeholder="Annual Salary" value="100000" type="number" required>
-        <button id="add-employee-button" type="submit">Submit</button>
+      <form onsubmit="addEmployee(event)" class="form-layout">
+        <div class="input-layout">
+          <input id="first-name" placeholder="First Name" type="text">
+          <input id="last-name" placeholder="Last Name" type="text">
+          <input id="id-number" placeholder="ID Number" type="number">
+          <input id="job-title" placeholder="Job Title" type="text">
+          <input id="annual-salary" placeholder="Annual Salary" type="number">
+        </div>
+        <br>
+        <!-- How do I get the button to justify-right? -->
+        <div class="button-form">
+          <button id="add-employee-button" type="submit">Submit</button>
+        </div>
       </form>
     </section>
 
@@ -36,8 +42,8 @@
             <th>Last Name</th>
             <th>ID</th>
             <th>Title</th>
-            <th>Annual Salary</th>
-            <th></th>
+            <th class="annual-salary-column">Annual Salary</th>
+            <th class="delete-button-column"></th>
           </tr>
         </thead>
         <tbody id="table-body">
@@ -45,7 +51,9 @@
         </tbody>
         <!-- <ul id="employee-array"></ul> -->
       </table>
-      <h3 id="total-monthly">Total Monthly: $0</h3>
+      <div class="container">
+        <h3 id="total-monthly">Total Monthly: $0</h3>
+      </div>
     </section>
 
   </main>

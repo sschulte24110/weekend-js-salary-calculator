@@ -11,6 +11,7 @@ header, footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: lightskyblue;
 }
 h1 {
   font-size: 2.5em;
@@ -19,17 +20,9 @@ h1 {
 /* FORM ELEMENTS */
 input {
   padding: .5em;
-  width: 150px;
+  width: 175px;
   background: #FCFCFC;
-  border: 1px solid;
-}
-.button-color {
-  padding: 10px;
-  width: 75px;
-  font-size: px;
-  border-radius: 5px;
-  cursor: pointer;
-  border-color: navy;
+  border: 1px solid black;
 }
 #add-employee-button {
   padding: 0px;
@@ -38,13 +31,12 @@ input {
   font-size: 18px;
   border-radius: 5px;
   cursor: pointer;
-  border-color: navy;
 }
 
 /* TABLE */
 table {
   width: 100%;
-  text-align: left;
+  /* text-align: left; */
 }
 table, th, td {
   border: 1px solid black;
@@ -53,8 +45,8 @@ table, th, td {
 }
 th, td {
   padding: .5em;
-  min-width: 3.5em;
-  border-color: navy;
+  min-width: 2.5em;
+  border-color: black;
   border-width: 3px;
 }
 thead {
@@ -67,7 +59,35 @@ tbody tr:nth-child(odd){
 tbody tr:nth-child(even){
   background: lightskyblue;
 }
-
-#total-monthly {
+td .annual-salary-column {
   text-align: right;
+}
+td .button-color-column {
+  text-align: center;
+}
+.button-color {
+  padding: 10px;
+  width: 75px;
+  font-size: px;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.input-layout {
+  display: flex;
+  justify-content: space-between;
+}
+.button-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+#total-monthly {
+  margin-top: 30px;
+  padding: 5px;
 }

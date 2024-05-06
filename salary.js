@@ -2,7 +2,6 @@ onReady();
 function onReady() {
   console.log('DOM is ready!');
   // renderEmployeeList();
-  // clearEmployees();
 }
 let employees = [];
 let USDollar = new Intl.NumberFormat('en-US', {
@@ -35,18 +34,6 @@ function addEmployee(event) {
   };
   console.log('Employee Object', eachEmployee);
 
-  // document.getElementById('table-body').innerHTML += `
-  // <tr>
-  //     <td>${firstNameInput.value}</td>
-  //     <td>${lastNameInput.value}</td>
-  //     <td>${idNumberInput.value}</td>
-  //     <td>${jobTitleInput.value}</td>
-  //     <td>${USDollar.format(annualSalaryInput.value)}</td>
-  //     <td><button class="button-color" onclick="deleteEmployee(event)">Delete</button></td>
-  //   </tr>
-  // `;
-  // console.log(`salary is: ${USDollar.format(annualSalaryInput.value)}`);
-
   employees.push(eachEmployee);
   console.log('Employee List:', employees);
 
@@ -61,6 +48,7 @@ function addEmployee(event) {
 }
 
 function employeeMonthlySalary() {
+  // Need to figure out out to make the red go away when an employee is deleted and the amount goes below 20,000
   let totalMonthly = 0;
   for (let i = 0; i < employees.length; i++) {
     totalMonthly = totalMonthly + employees[i].annualSalary;
@@ -79,6 +67,7 @@ function employeeMonthlySalary() {
       divideMonthly
     )}`;
   }
+  renderEmployeeList();
 }
 
 function renderEmployeeList() {
@@ -94,9 +83,11 @@ function renderEmployeeList() {
       <td>${employees[i].jobTitle}</td>
       <td>${USDollar.format(employees[i].annualSalary)}</td>
       <td><button id=${i} class="button-color" onclick="deleteEmployee(event)">Delete</button></td>
-    </tr>
-  `;
+      </tr>
+      `;
   }
+  // Need to figure out how to get text in annual salary column to justify-right
+  // Need to figure out how to center delete button in column
 }
 
 function deleteEmployee(event) {
@@ -108,6 +99,8 @@ function deleteEmployee(event) {
   employeeMonthlySalary();
 }
 
-// function clearEmployees() {
-//   document.getElementById('employee-array').innerHTML = '';
-// }
+// See comments to get help on:
+// 1. Need to figure out out to make the red go away when an employee is deleted and the amount goes below 20,000
+// 2. Need to figure out how to get text in annual salary column to justify-right
+// 3. Need to figure out how to center delete button in column
+// 4. How do I get the Submit button to justify-right?
