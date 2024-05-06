@@ -4,9 +4,11 @@ function onReady() {
   // renderEmployeeList();
 }
 let employees = [];
-let USDollar = new Intl.NumberFormat('en-US', {
+const USDollar = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
+  // Add below to round without decimals
+  maximumFractionDigits: 0,
 });
 
 function addEmployee(event) {
